@@ -1,0 +1,15 @@
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\bin\Debug\net9.0\Hospital Mangament System.BLL.deps.json
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\bin\Debug\net9.0\Hospital Mangament System.BLL.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\bin\Debug\net9.0\Hospital Mangament System.BLL.pdb
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\bin\Debug\net9.0\Hospital Managment System.DAL.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\bin\Debug\net9.0\Hospital Managment System.DAL.pdb
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\Hospital Mangament System.BLL.csproj.AssemblyReference.cache
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\Hospital Mangament System.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\Hospital Mangament System.BLL.AssemblyInfoInputs.cache
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\Hospital Mangament System.BLL.AssemblyInfo.cs
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\Hospital Mangament System.BLL.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\Hospital.E3A701FC.Up2Date
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\Hospital Mangament System.BLL.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\refint\Hospital Mangament System.BLL.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\Hospital Mangament System.BLL.pdb
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Mangament System.BLL\obj\Debug\net9.0\ref\Hospital Mangament System.BLL.dll
