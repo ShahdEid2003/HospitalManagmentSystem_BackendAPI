@@ -179,3 +179,5 @@ C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospita
 C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System .PL\obj\Debug\net9.0\Hospital_Managment_System_.PL.Resources.SharedResources.ar.resources
 C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System .PL\obj\Debug\net9.0\Hospital Managment System.PL.csproj.GenerateResource.cache
 C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System .PL\obj\Debug\net9.0\ar\Hospital Managment System.PL.resources.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System .PL\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System .PL\obj\Debug\net9.0\Hospital Managment System.PL.sourcelink.json

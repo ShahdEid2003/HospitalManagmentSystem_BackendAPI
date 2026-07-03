@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Hospital_Managment_System_.PL</RootNamespace>
+    <UserSecretsId>e100c98f-9a62-43bd-a4b6-a6d501e478f4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

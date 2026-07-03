@@ -12,3 +12,4 @@ C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospita
 C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Debug\net9.0\Hospital Managment System.DAL.pdb
 C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Debug\net9.0\Hospital Managment System.DAL.genruntimeconfig.cache
 C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Debug\net9.0\ref\Hospital Managment System.DAL.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Debug\net9.0\Hospital Managment System.DAL.sourcelink.json
