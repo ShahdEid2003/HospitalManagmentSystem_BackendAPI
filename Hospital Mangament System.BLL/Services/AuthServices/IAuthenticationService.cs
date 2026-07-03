@@ -14,8 +14,8 @@ namespace Hospital_Mangament_System.BLL.Services.AuthServices
         Task<LoginResponse> Login(LoginRequest request);
         Task<bool> ConfirmEmail(string token, string userId);
         Task<bool> ApproveDoctor(string userId);
-        //Task<ForgetPasswordResponse> RequestPasswordRest(ForgetPasswordRequest request);
-        //Task<ResetPasswordResponse> ResetPasswordAsync(ResetPasswordRequest request);
-        //Task<LoginResponse> RefreshTokenAsync();
+        Task<ForgetPasswordResponse> RequestPasswordRest(ForgetPasswordRequest request);
+        Task<ResetPasswordResponse> ResetPasswordAsync(ResetPasswordRequest request);
+        Task<LoginResponse> RefreshTokenAsync();
     }
 }

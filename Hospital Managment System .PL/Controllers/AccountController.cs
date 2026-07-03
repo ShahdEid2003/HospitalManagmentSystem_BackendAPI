@@ -48,5 +48,26 @@ namespace Hospital_Managment_System_.PL.Controllers
 
             return Ok("Doctor approved successfully.");
         }
+        [HttpPost("SendCode")]
+        public async Task<IActionResult> RequestPasswordReset(ForgetPasswordRequest request)
+        {
+            var result = await _authService.RequestPasswordRest(request);
+            if (!result.Success) return BadRequest();
+            return Ok(result);
+        }
+        [HttpPost("ResetPassword")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordRequest request)
+        {
+            var result = await _authService.ResetPasswordAsync(request);
+            if (!result.Success) return BadRequest();
+            return Ok(result);
+        }
+        [HttpPost("Refresh")]
+        public async Task<IActionResult> RefreshToken()
+        {
+            var result = await _authService.RefreshTokenAsync();
+            if (!result.Success) return Unauthorized();
+            return Ok(result);
+        }
     }
 }
