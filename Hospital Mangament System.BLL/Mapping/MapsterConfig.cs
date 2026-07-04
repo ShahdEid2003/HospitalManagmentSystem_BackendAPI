@@ -1,12 +1,24 @@
-﻿using System;
+﻿using Hospital_Managment_System.DAL.DTO.Response;
+using Hospital_Managment_System.DAL.Models;
+using Mapster;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Hospital_Mangament_System.BLL.Mapping
 {
-    public class MapsterConfig
+    public static class MapsterConfig
     {
+        public static void MapsterConfigRegister()
+        {
+            TypeAdapterConfig<Department, DepartmentResponse>.NewConfig()
+              .Map(destniation => destniation.UserCreated, source => source.CreatedBy.UserName)
+              .Map(dest => dest.Name, source => source.Translations
+              .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+              .Select(t => t.Name).FirstOrDefault() ?? "Default Department Name");
+        }
     }
 }

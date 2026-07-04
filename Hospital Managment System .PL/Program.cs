@@ -1,6 +1,7 @@
 
 using Hospital_Managment_System.DAL.Utiles;
 using Hospital_Managment_System_.PL.Extensions;
+using Hospital_Mangament_System.BLL.Mapping;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Extensions.Options;
 
@@ -26,6 +27,7 @@ namespace Hospital_Managment_System_.PL
             builder.Services.AddLocalizationServices();
             builder.Services.AddAplicationServices(builder.Configuration);
             builder.Services.AddAuthorization();//jwt
+            MapsterConfig.MapsterConfigRegister();
             var app = builder.Build();
             app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
