@@ -22,8 +22,7 @@ namespace Hospital_Managment_System.DAL.Models
 
         public ApplicationUser User { get; set; }
 
-
-
+        public List<Appointment> Appointments { get; set; } = new List<Appointment>();
         //public List<Appointment> Appointments { get; set; }
 
         //public  List<MedicalRecord> MedicalRecords { get; set; }

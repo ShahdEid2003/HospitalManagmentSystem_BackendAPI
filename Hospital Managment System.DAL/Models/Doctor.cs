@@ -19,10 +19,9 @@ namespace Hospital_Managment_System.DAL.Models
         public string LicenseNumber { get; set; }
 
         public ApplicationUser User { get; set; }
+        public List<Appointment> Appointments { get; set; }= new List<Appointment>();
 
         //public Department Department { get; set; }
-
-        //public  List<Appointment> Appointments { get; set; }
 
         //public  List<DoctorSchedule> DoctorSchedules { get; set; }
 

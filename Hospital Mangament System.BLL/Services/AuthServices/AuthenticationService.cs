@@ -204,11 +204,18 @@ namespace Hospital_Mangament_System.BLL.Services.AuthServices
         private async Task<string> GenerateAccessToken(ApplicationUser user)
         {
             var userClaims = new List<Claim>()
-        {
-            new Claim(ClaimTypes.NameIdentifier, user.Id),
-            new Claim(ClaimTypes.Name, user.UserName),
-            new Claim(ClaimTypes.Email, user.Email),
-        };
+    {
+        new Claim(ClaimTypes.NameIdentifier, user.Id),
+        new Claim(ClaimTypes.Name, user.UserName),
+        new Claim(ClaimTypes.Email, user.Email),
+    };
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            foreach (var role in roles)
+            {
+                userClaims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var securityKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"])
@@ -220,8 +227,8 @@ namespace Hospital_Mangament_System.BLL.Services.AuthServices
             );
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],   // الجهة التي أصدرت التوكن (Auth Server / API)
-                audience: _configuration["Jwt:Audience"], // الجهة المسموح لها استخدام التوكن 
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
                 claims: userClaims,
                 expires: DateTime.Now.AddMinutes(1),
                 signingCredentials: credentials

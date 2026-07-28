@@ -106,6 +106,82 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateOnly>("AppointmentDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.HasIndex("UpdatedById");
+
+                    b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.AppointmentTranslation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AppointmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppointmentId");
+
+                    b.ToTable("AppointmentTranslations");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -406,6 +482,50 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Appointment", b =>
+                {
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Doctor", "Doctor")
+                        .WithMany("Appointments")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Patient", "Patient")
+                        .WithMany("Appointments")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "UpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("UpdatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+
+                    b.Navigation("UpdatedBy");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.AppointmentTranslation", b =>
+                {
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Appointment", "Appointment")
+                        .WithMany("Translations")
+                        .HasForeignKey("AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Department", b =>
                 {
                     b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "CreatedBy")
@@ -546,11 +666,26 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.Navigation("Patient");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Appointment", b =>
+                {
+                    b.Navigation("Translations");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Department", b =>
                 {
                     b.Navigation("Doctors");
 
                     b.Navigation("Translations");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Doctor", b =>
+                {
+                    b.Navigation("Appointments");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Patient", b =>
+                {
+                    b.Navigation("Appointments");
                 });
 #pragma warning restore 612, 618
         }
