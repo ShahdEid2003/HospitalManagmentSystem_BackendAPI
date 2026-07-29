@@ -33,5 +33,6 @@ namespace Hospital_Managment_System.DAL.Models
 
         public List<AppointmentTranslation> Translations { get; set; }
             = new List<AppointmentTranslation>();
+        public MedicalRecord? MedicalRecord { get; set; }
     }
 }

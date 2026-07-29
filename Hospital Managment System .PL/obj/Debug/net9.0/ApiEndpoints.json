@@ -267,5 +267,105 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.MedicalRecordController",
+    "Method": "Create",
+    "RelativePath": "api/MedicalRecord",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.MedicalRecordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.MedicalRecordController",
+    "Method": "Update",
+    "RelativePath": "api/MedicalRecord",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.UpdateMedicalRecordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.MedicalRecordController",
+    "Method": "GetAll",
+    "RelativePath": "api/MedicalRecord",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.MedicalRecordController",
+    "Method": "Delete",
+    "RelativePath": "api/MedicalRecord/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.MedicalRecordController",
+    "Method": "GetById",
+    "RelativePath": "api/MedicalRecord/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.MedicalRecordController",
+    "Method": "MyRecords",
+    "RelativePath": "api/MedicalRecord/MyRecords",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.MedicalRecordController",
+    "Method": "PatientRecords",
+    "RelativePath": "api/MedicalRecord/Patient/{patientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

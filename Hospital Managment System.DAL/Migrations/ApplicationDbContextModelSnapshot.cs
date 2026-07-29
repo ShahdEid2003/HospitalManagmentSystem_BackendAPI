@@ -295,6 +295,86 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.ToTable("Doctors");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.MedicalRecord", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AppointmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateOnly>("VisitDate")
+                        .HasColumnType("date");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppointmentId")
+                        .IsUnique();
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.HasIndex("UpdatedById");
+
+                    b.ToTable("MedicalRecords");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.MedicalRecordTranslations", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Diagnosis")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MedicalRecordId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicalRecordId");
+
+                    b.ToTable("MedicalRecordTranslations");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Patient", b =>
                 {
                     b.Property<int>("Id")
@@ -583,6 +663,58 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.MedicalRecord", b =>
+                {
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Appointment", "Appointment")
+                        .WithOne("MedicalRecord")
+                        .HasForeignKey("Hospital_Managment_System.DAL.Models.MedicalRecord", "AppointmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Doctor", "Doctor")
+                        .WithMany("MedicalRecords")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Patient", "Patient")
+                        .WithMany("MedicalRecords")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "UpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("UpdatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Appointment");
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+
+                    b.Navigation("UpdatedBy");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.MedicalRecordTranslations", b =>
+                {
+                    b.HasOne("Hospital_Managment_System.DAL.Models.MedicalRecord", "MedicalRecord")
+                        .WithMany("Translations")
+                        .HasForeignKey("MedicalRecordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MedicalRecord");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Patient", b =>
                 {
                     b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "CreatedBy")
@@ -668,6 +800,8 @@ namespace Hospital_Managment_System.DAL.Migrations
 
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Appointment", b =>
                 {
+                    b.Navigation("MedicalRecord");
+
                     b.Navigation("Translations");
                 });
 
@@ -681,11 +815,20 @@ namespace Hospital_Managment_System.DAL.Migrations
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Doctor", b =>
                 {
                     b.Navigation("Appointments");
+
+                    b.Navigation("MedicalRecords");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.MedicalRecord", b =>
+                {
+                    b.Navigation("Translations");
                 });
 
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Patient", b =>
                 {
                     b.Navigation("Appointments");
+
+                    b.Navigation("MedicalRecords");
                 });
 #pragma warning restore 612, 618
         }

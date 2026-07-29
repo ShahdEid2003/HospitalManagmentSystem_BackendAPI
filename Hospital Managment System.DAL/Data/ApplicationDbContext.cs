@@ -23,6 +23,9 @@ namespace Hospital_Managment_System.DAL.Data
         public DbSet<Appointment> Appointments { get; set; }
 
         public DbSet<AppointmentTranslation> AppointmentTranslations { get; set; }
+        public DbSet<MedicalRecord> MedicalRecords { get; set; }
+
+        public DbSet<MedicalRecordTranslations> MedicalRecordTranslations { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IHttpContextAccessor httpContextAccessor)
         : base(options)
         {
@@ -100,6 +103,42 @@ namespace Hospital_Managment_System.DAL.Data
                 .HasOne(a => a.UpdatedBy)
                 .WithMany()
                 .HasForeignKey(a => a.UpdatedById)
+                .OnDelete(DeleteBehavior.NoAction);
+            //medical
+            builder.Entity<MedicalRecord>()
+            .HasOne(x => x.Patient)
+            .WithMany(x => x.MedicalRecords)
+            .HasForeignKey(x => x.PatientId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<MedicalRecord>()
+                .HasOne(x => x.Doctor)
+                .WithMany(x => x.MedicalRecords)
+                .HasForeignKey(x => x.DoctorId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<MedicalRecord>()
+                .HasOne(x => x.Appointment)
+                .WithOne(x => x.MedicalRecord)
+                .HasForeignKey<MedicalRecord>(x => x.AppointmentId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<MedicalRecord>()
+                .HasMany(x => x.Translations)
+                .WithOne(x => x.MedicalRecord)
+                .HasForeignKey(x => x.MedicalRecordId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<MedicalRecord>()
+                .HasOne(x => x.CreatedBy)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedById)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<MedicalRecord>()
+                .HasOne(x => x.UpdatedBy)
+                .WithMany()
+                .HasForeignKey(x => x.UpdatedById)
                 .OnDelete(DeleteBehavior.NoAction);
         }
 
