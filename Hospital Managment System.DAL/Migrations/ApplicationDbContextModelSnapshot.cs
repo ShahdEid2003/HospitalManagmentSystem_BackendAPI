@@ -429,6 +429,77 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.ToTable("Patients");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Prescription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MedicalRecordId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("MedicalRecordId");
+
+                    b.HasIndex("UpdatedById");
+
+                    b.ToTable("Prescriptions");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.PrescriptionTranslations", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Dosage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Instructions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MedicationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PrescriptionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PrescriptionId");
+
+                    b.ToTable("PrescriptionTranslations");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -740,6 +811,42 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Prescription", b =>
+                {
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.MedicalRecord", "MedicalRecord")
+                        .WithMany("Prescriptions")
+                        .HasForeignKey("MedicalRecordId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "UpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("UpdatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("MedicalRecord");
+
+                    b.Navigation("UpdatedBy");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.PrescriptionTranslations", b =>
+                {
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Prescription", "Prescription")
+                        .WithMany("Translations")
+                        .HasForeignKey("PrescriptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Prescription");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -821,6 +928,8 @@ namespace Hospital_Managment_System.DAL.Migrations
 
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.MedicalRecord", b =>
                 {
+                    b.Navigation("Prescriptions");
+
                     b.Navigation("Translations");
                 });
 
@@ -829,6 +938,11 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.Navigation("Appointments");
 
                     b.Navigation("MedicalRecords");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Prescription", b =>
+                {
+                    b.Navigation("Translations");
                 });
 #pragma warning restore 612, 618
         }

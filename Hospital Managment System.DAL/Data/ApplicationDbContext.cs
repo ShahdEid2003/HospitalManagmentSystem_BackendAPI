@@ -26,6 +26,9 @@ namespace Hospital_Managment_System.DAL.Data
         public DbSet<MedicalRecord> MedicalRecords { get; set; }
 
         public DbSet<MedicalRecordTranslations> MedicalRecordTranslations { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
+
+        public DbSet<PrescriptionTranslations> PrescriptionTranslations { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IHttpContextAccessor httpContextAccessor)
         : base(options)
         {
@@ -136,6 +139,30 @@ namespace Hospital_Managment_System.DAL.Data
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<MedicalRecord>()
+                .HasOne(x => x.UpdatedBy)
+                .WithMany()
+                .HasForeignKey(x => x.UpdatedById)
+                .OnDelete(DeleteBehavior.NoAction);
+            //Prescription
+            builder.Entity<Prescription>()
+                .HasOne(x => x.MedicalRecord)
+                .WithMany(x => x.Prescriptions)
+                .HasForeignKey(x => x.MedicalRecordId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Prescription>()
+                .HasMany(x => x.Translations)
+                .WithOne(x => x.Prescription)
+                .HasForeignKey(x => x.PrescriptionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Prescription>()
+                .HasOne(x => x.CreatedBy)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedById)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Prescription>()
                 .HasOne(x => x.UpdatedBy)
                 .WithMany()
                 .HasForeignKey(x => x.UpdatedById)

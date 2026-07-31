@@ -61,6 +61,28 @@ namespace Hospital_Mangament_System.BLL.Mapping
                  .Where(x => x.Language == CultureInfo.CurrentCulture.Name)
                  .Select(x => x.Notes)
                  .FirstOrDefault() ?? "");
+            TypeAdapterConfig<Prescription, PrescriptionResponse>.NewConfig()
+
+            .Map(dest => dest.UserCreated,
+                 src => src.CreatedBy.UserName)
+
+            .Map(dest => dest.MedicationName,
+                 src => src.Translations
+                 .Where(x => x.Language == CultureInfo.CurrentCulture.Name)
+                 .Select(x => x.MedicationName)
+                 .FirstOrDefault() ?? "")
+
+            .Map(dest => dest.Dosage,
+                 src => src.Translations
+                 .Where(x => x.Language == CultureInfo.CurrentCulture.Name)
+                 .Select(x => x.Dosage)
+                 .FirstOrDefault() ?? "")
+
+            .Map(dest => dest.Instructions,
+                 src => src.Translations
+                 .Where(x => x.Language == CultureInfo.CurrentCulture.Name)
+                 .Select(x => x.Instructions)
+                 .FirstOrDefault() ?? "");
         }
         
     }

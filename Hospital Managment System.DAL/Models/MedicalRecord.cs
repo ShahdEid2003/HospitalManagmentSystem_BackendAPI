@@ -22,11 +22,10 @@ namespace Hospital_Managment_System.DAL.Models
         public DateOnly VisitDate { get; set; }
 
         public List<MedicalRecordTranslations> Translations { get; set; }
-          
 
-        //public List<Prescription> Prescriptions { get; set; }
-        //    = new();
 
+        public List<Prescription> Prescriptions { get; set; }
+           
         //public List<LabResult> LabResults { get; set; }
         //    = new();
     }
