@@ -25,8 +25,7 @@ namespace Hospital_Managment_System.DAL.Models
 
 
         public List<Prescription> Prescriptions { get; set; }
-           
-        //public List<LabResult> LabResults { get; set; }
-        //    = new();
+
+        public List<LabResult> LabResults { get; set; } 
     }
 }

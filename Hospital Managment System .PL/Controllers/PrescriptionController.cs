@@ -34,7 +34,7 @@ namespace Hospital_Managment_System_.PL.Controllers
         }
 
         [Authorize(Roles = "Doctor")]
-        [HttpPut]
+        [HttpPatch]
         public async Task<IActionResult> Update(UpdatePrescriptionRequest request)
         {
             var result = await _prescriptionService.Update(request);

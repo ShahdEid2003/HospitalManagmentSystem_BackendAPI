@@ -269,6 +269,96 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.LabResultController",
+    "Method": "Create",
+    "RelativePath": "api/LabResult",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.LabResultRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.LabResultController",
+    "Method": "Update",
+    "RelativePath": "api/LabResult",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.UpdateLabResultRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.LabResultController",
+    "Method": "GetAll",
+    "RelativePath": "api/LabResult",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.LabResultController",
+    "Method": "Delete",
+    "RelativePath": "api/LabResult/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.LabResultController",
+    "Method": "GetById",
+    "RelativePath": "api/LabResult/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.LabResultController",
+    "Method": "GetByMedicalRecord",
+    "RelativePath": "api/LabResult/MedicalRecord/{medicalRecordId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "medicalRecordId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Hospital_Managment_System_.PL.Controllers.MedicalRecordController",
     "Method": "Create",
     "RelativePath": "api/MedicalRecord",
@@ -362,6 +452,96 @@
     "Parameters": [
       {
         "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PrescriptionController",
+    "Method": "Create",
+    "RelativePath": "api/Prescription",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.PrescriptionRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PrescriptionController",
+    "Method": "Update",
+    "RelativePath": "api/Prescription",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.UpdatePrescriptionRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PrescriptionController",
+    "Method": "GetAll",
+    "RelativePath": "api/Prescription",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PrescriptionController",
+    "Method": "Delete",
+    "RelativePath": "api/Prescription/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PrescriptionController",
+    "Method": "GetById",
+    "RelativePath": "api/Prescription/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PrescriptionController",
+    "Method": "GetByMedicalRecord",
+    "RelativePath": "api/Prescription/MedicalRecord/{medicalRecordId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "medicalRecordId",
         "Type": "System.Int32",
         "IsRequired": true
       }

@@ -83,7 +83,29 @@ namespace Hospital_Mangament_System.BLL.Mapping
                  .Where(x => x.Language == CultureInfo.CurrentCulture.Name)
                  .Select(x => x.Instructions)
                  .FirstOrDefault() ?? "");
-        }
+            TypeAdapterConfig<LabResult, LabResultResponse>.NewConfig()
+
+            .Map(dest => dest.UserCreated,
+                 src => src.CreatedBy.UserName)
+
+            .Map(dest => dest.TestName,
+                 src => src.Translations
+                 .Where(x => x.Language == CultureInfo.CurrentCulture.Name)
+                 .Select(x => x.TestName)
+                 .FirstOrDefault() ?? "")
+
+            .Map(dest => dest.Result,
+                 src => src.Translations
+                 .Where(x => x.Language == CultureInfo.CurrentCulture.Name)
+                 .Select(x => x.Result)
+                 .FirstOrDefault() ?? "")
+
+            .Map(dest => dest.Notes,
+                 src => src.Translations
+                 .Where(x => x.Language == CultureInfo.CurrentCulture.Name)
+                 .Select(x => x.Notes)
+                 .FirstOrDefault() ?? "");
+                    }
         
     }
 }
