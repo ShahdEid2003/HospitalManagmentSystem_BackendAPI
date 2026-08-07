@@ -230,7 +230,7 @@ namespace Hospital_Mangament_System.BLL.Services.AuthServices
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: userClaims,
-                expires: DateTime.Now.AddMinutes(1),
+                expires: DateTime.Now.AddMinutes(15),
                 signingCredentials: credentials
             );
 

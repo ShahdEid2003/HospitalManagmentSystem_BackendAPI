@@ -105,7 +105,14 @@ namespace Hospital_Mangament_System.BLL.Mapping
                  .Where(x => x.Language == CultureInfo.CurrentCulture.Name)
                  .Select(x => x.Notes)
                  .FirstOrDefault() ?? "");
-                    }
+            TypeAdapterConfig<DoctorSchedule, DoctorScheduleResponse>
+            .NewConfig()
+            .Map(
+             dest => dest.UserCreated,
+             src => src.CreatedBy.UserName
+            );
+        }
+
         
     }
 }
