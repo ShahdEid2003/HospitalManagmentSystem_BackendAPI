@@ -117,6 +117,89 @@ namespace Hospital_Mangament_System.BLL.Mapping
                 dest => dest.PatientName,
                 src => src.Patient.User.FullName
             );
+            TypeAdapterConfig<Patient, PatientDetailsResponse>
+            .NewConfig()
+            .Map(
+                dest => dest.FullName,
+                src => src.User.FullName
+            )
+            .Map(
+                dest => dest.Email,
+                src => src.User.Email
+            )
+            .Map(
+                dest => dest.PhoneNumber,
+                src => src.User.PhoneNumber
+            );
+            TypeAdapterConfig<Doctor, DoctorResponse>
+            .NewConfig()
+            .Map(
+                dest => dest.FullName,
+                src => src.User.FullName
+            )
+            .Map(
+                dest => dest.Email,
+                src => src.User.Email
+            )
+            .Map(
+                dest => dest.PhoneNumber,
+                src => src.User.PhoneNumber
+            )
+            .Map(
+                dest => dest.DepartmentName,
+                src => src.Department.Translations
+                    .Where(t =>
+                        t.Language == CultureInfo.CurrentCulture.Name)
+                    .Select(t => t.Name)
+                    .FirstOrDefault()
+                    ?? "Default Department Name"
+            );
+            TypeAdapterConfig<Appointment, PatientAppointmentResponse>.NewConfig()
+            .Map(dest => dest.DoctorName, src => src.Doctor.User.FullName)
+            .Map(dest => dest.Specialty, src => src.Doctor.Specialty);
+            TypeAdapterConfig<AppointmentBooking, BookingResponse>.NewConfig()
+            .Map(dest => dest.PatientName,
+                src => src.Patient.User.FullName)
+            .Map(dest => dest.DoctorName,
+                src => src.Doctor.User.FullName);
+            TypeAdapterConfig<MedicalRecord, PatientMedicalRecordResponse>
+            .NewConfig()
+            .Map(
+                dest => dest.DoctorName,
+                src => src.Doctor.User.FullName
+            )
+            .Map(
+                dest => dest.Diagnosis,
+                src => src.Translations
+                    .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                    .Select(t => t.Diagnosis)
+                    .FirstOrDefault()
+            )
+            .Map(
+                dest => dest.Notes,
+                src => src.Translations
+                    .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                    .Select(t => t.Notes)
+                    .FirstOrDefault()
+            );
+            TypeAdapterConfig<Prescription, PrescriptionResponse>
+            .NewConfig()
+    
+            .Map(dest => dest.MedicationName,
+                src => src.Translations
+                    .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                    .Select(t => t.MedicationName)
+                    .FirstOrDefault())
+            .Map(dest => dest.Dosage,
+                src => src.Translations
+                    .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                    .Select(t => t.Dosage)
+                    .FirstOrDefault())
+            .Map(dest => dest.Instructions,
+                src => src.Translations
+                    .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                    .Select(t => t.Instructions)
+                    .FirstOrDefault());
         }
 
         

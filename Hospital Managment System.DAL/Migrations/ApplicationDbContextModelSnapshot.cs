@@ -157,6 +157,57 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.ToTable("Appointments");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.AppointmentBooking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateOnly>("AppointmentDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.HasIndex("UpdatedById");
+
+                    b.ToTable("AppointmentBookings");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.AppointmentTranslation", b =>
                 {
                     b.Property<int>("Id")
@@ -836,6 +887,39 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.Navigation("UpdatedBy");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.AppointmentBooking", b =>
+                {
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Doctor", "Doctor")
+                        .WithMany("AppointmentBookings")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Patient", "Patient")
+                        .WithMany("AppointmentBookings")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "UpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("UpdatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+
+                    b.Navigation("UpdatedBy");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.AppointmentTranslation", b =>
                 {
                     b.HasOne("Hospital_Managment_System.DAL.Models.Appointment", "Appointment")
@@ -880,7 +964,7 @@ namespace Hospital_Managment_System.DAL.Migrations
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.HasOne("Hospital_Managment_System.DAL.Models.Department", null)
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Department", "Department")
                         .WithMany("Doctors")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -898,6 +982,8 @@ namespace Hospital_Managment_System.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("CreatedBy");
+
+                    b.Navigation("Department");
 
                     b.Navigation("UpdatedBy");
 
@@ -1185,6 +1271,8 @@ namespace Hospital_Managment_System.DAL.Migrations
 
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Doctor", b =>
                 {
+                    b.Navigation("AppointmentBookings");
+
                     b.Navigation("Appointments");
 
                     b.Navigation("DoctorRatings");
@@ -1210,6 +1298,8 @@ namespace Hospital_Managment_System.DAL.Migrations
 
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Patient", b =>
                 {
+                    b.Navigation("AppointmentBookings");
+
                     b.Navigation("Appointments");
 
                     b.Navigation("DoctorRatings");

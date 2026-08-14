@@ -2,6 +2,7 @@
 using Hospital_Managment_System.DAL.DTO.Response;
 using Hospital_Managment_System.DAL.Models;
 using Hospital_Managment_System.DAL.Repository.AppointmentRepositories;
+using Hospital_Managment_System.DAL.Repository.BookingRepositories;
 using Hospital_Managment_System.DAL.Repository.DoctorRepositories;
 using Mapster;
 using System;
@@ -16,13 +17,28 @@ namespace Hospital_Mangament_System.BLL.Services.AppointmentServices
     {
         private readonly IAppointmentRepository _appointmentRepository;
         private readonly IDoctorRepository _doctorRepository;
+        private readonly IAppointmentBookingRepository _appointmentBookingRepository;
 
         public AppointmentService(
             IAppointmentRepository appointmentRepository,
-            IDoctorRepository doctorRepository)
+            IDoctorRepository doctorRepository,
+               IAppointmentBookingRepository appointmentBookingRepository)
         {
             _appointmentRepository = appointmentRepository;
             _doctorRepository = doctorRepository;
+            _appointmentBookingRepository = appointmentBookingRepository;
+        }
+        public async Task<List<BookingResponse>> GetPendingBookings()
+        {
+            var bookings = await _appointmentBookingRepository.GetAll(
+                x => x.Status == BookingStatus.Pending,
+                new string[]
+                {
+            $"{nameof(AppointmentBooking.Patient)}.{nameof(Patient.User)}",
+            $"{nameof(AppointmentBooking.Doctor)}.{nameof(Doctor.User)}"
+                });
+
+            return bookings.Adapt<List<BookingResponse>>();
         }
         public async Task<AppointmentResponse> Create(AppointmentRequest request)
         {

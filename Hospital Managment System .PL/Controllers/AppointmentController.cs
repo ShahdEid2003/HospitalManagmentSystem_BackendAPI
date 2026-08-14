@@ -17,7 +17,7 @@ namespace Hospital_Managment_System_.PL.Controllers
 
         private readonly IAppointmentService _appointmentService;
         private readonly IStringLocalizer<SharedResources> _localizer;
-
+      
         public AppointmentController(
             IAppointmentService appointmentService,
             IStringLocalizer<SharedResources> localizer)
@@ -26,6 +26,13 @@ namespace Hospital_Managment_System_.PL.Controllers
             _localizer = localizer;
         }
 
+        [Authorize(Roles = "Receptionist")]
+        [HttpGet("Pending")]
+        public async Task<IActionResult> GetPendingBookings()
+        {
+            var result = await _appointmentService.GetPendingBookings();
+            return Ok(result);
+        }
         [Authorize(Roles = "Receptionist")]
         [HttpPost]
         public async Task<IActionResult> Create(AppointmentRequest request)

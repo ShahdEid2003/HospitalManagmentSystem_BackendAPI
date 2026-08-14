@@ -23,11 +23,12 @@ namespace Hospital_Managment_System.DAL.Models
         public List<MedicalRecord> MedicalRecords { get; set; }
 
 
-        //public Department Department { get; set; }
+        public Department Department { get; set; }
         public List<DoctorSchedule> DoctorSchedules { get; set; }
          = new List<DoctorSchedule>();
 
-
+        public List<AppointmentBooking> AppointmentBookings { get; set; }
+   
         public List<DoctorRating> DoctorRatings { get; set; }
     }
 }

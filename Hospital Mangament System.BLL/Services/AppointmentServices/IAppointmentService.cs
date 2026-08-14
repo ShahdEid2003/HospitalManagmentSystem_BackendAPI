@@ -10,6 +10,7 @@ namespace Hospital_Mangament_System.BLL.Services.AppointmentServices
 {
     public interface IAppointmentService
     {
+        Task<List<BookingResponse>> GetPendingBookings();
         Task<AppointmentResponse> Create(AppointmentRequest request);
 
         Task<bool> Update(UpdateAppointmentRequest request);

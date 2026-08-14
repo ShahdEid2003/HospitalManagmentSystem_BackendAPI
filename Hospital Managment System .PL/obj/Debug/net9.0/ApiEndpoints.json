@@ -186,6 +186,16 @@
   },
   {
     "ContainingType": "Hospital_Managment_System_.PL.Controllers.AppointmentController",
+    "Method": "GetPendingBookings",
+    "RelativePath": "api/Appointment/Pending",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.AppointmentController",
     "Method": "TodayAppointments",
     "RelativePath": "api/Appointment/Today",
     "HttpMethod": "GET",
@@ -262,6 +272,32 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.DoctorController",
+    "Method": "GetMyPatients",
+    "RelativePath": "api/Doctor/MyPatients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.DoctorController",
+    "Method": "GetPatientDetails",
+    "RelativePath": "api/Doctor/Patients/{patientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -634,6 +670,151 @@
         "Name": "patientId",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "GetMyAppointments",
+    "RelativePath": "api/Patient/Appointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "CancelAppointment",
+    "RelativePath": "api/Patient/Appointments/{appointmentId}/Cancel",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "BookAppointment",
+    "RelativePath": "api/Patient/Bookings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.BookAppointmentRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "GetMyBookings",
+    "RelativePath": "api/Patient/Bookings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "GetDoctors",
+    "RelativePath": "api/Patient/Doctors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "GetDoctorDetails",
+    "RelativePath": "api/Patient/Doctors/{doctorId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "GetDoctorSchedule",
+    "RelativePath": "api/Patient/Doctors/{doctorId}/Schedule",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "GetMyLabResults",
+    "RelativePath": "api/Patient/LabResults",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "GetMyMedicalRecords",
+    "RelativePath": "api/Patient/MedicalRecords",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "GetMyPrescriptions",
+    "RelativePath": "api/Patient/Prescriptions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
+    "Method": "SearchDoctors",
+    "RelativePath": "api/Patient/SearchDoctors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DepartmentId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

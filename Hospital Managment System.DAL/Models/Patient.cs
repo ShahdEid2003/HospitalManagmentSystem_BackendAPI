@@ -28,7 +28,8 @@ namespace Hospital_Managment_System.DAL.Models
         public List<MedicalRecord> MedicalRecords { get; set; }
 
         //public  List<Bill> Bills { get; set; }
-
+        public List<AppointmentBooking> AppointmentBookings { get; set; }
+    
         public List<DoctorRating> DoctorRatings { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Hospital_Managment_System.DAL.Repository.AppointmentRepositories;
+using Hospital_Managment_System.DAL.Repository.BookingRepositories;
 using Hospital_Managment_System.DAL.Repository.DepartmentRepositories;
 using Hospital_Managment_System.DAL.Repository.DoctorRatingRepositories;
 using Hospital_Managment_System.DAL.Repository.DoctorRepositories;
@@ -13,9 +14,11 @@ using Hospital_Mangament_System.BLL.Services.AuthServices;
 using Hospital_Mangament_System.BLL.Services.DepartmentServices;
 using Hospital_Mangament_System.BLL.Services.DoctorRatingServices;
 using Hospital_Mangament_System.BLL.Services.DoctorScheduleServices;
+using Hospital_Mangament_System.BLL.Services.DoctorService;
 using Hospital_Mangament_System.BLL.Services.Email;
 using Hospital_Mangament_System.BLL.Services.LabResultServices;
 using Hospital_Mangament_System.BLL.Services.MedicalRecoredServices;
+using Hospital_Mangament_System.BLL.Services.PatientServices;
 using Hospital_Mangament_System.BLL.Services.PrescriptionServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -37,6 +40,7 @@ namespace Hospital_Managment_System_.PL.Extensions
             Services.AddTransient<IEmailSender, EmailSender>();
             Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             Services.AddScoped<IAppointmentService, AppointmentService>();
+            Services.AddScoped<IAppointmentBookingRepository, AppointmentBookingRepository>();          
             Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
             Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
             Services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
@@ -45,9 +49,9 @@ namespace Hospital_Managment_System_.PL.Extensions
             Services.AddScoped<IDoctorScheduleRepository, DoctorScheduleRepository>();
             Services.AddScoped<IDoctorRatingRepository,DoctorRatingRepository>();
             Services.AddScoped<IDoctorRatingService,DoctorRatingService>();
-
+            Services.AddScoped<IDoctorService, DoctorService>();
             Services.AddScoped<IDoctorScheduleService,DoctorScheduleService>();
-
+            Services.AddScoped<IPatientService, PatientService>();
             Services.AddScoped<ILabResultService, LabResultService>();
 
             return Services;
