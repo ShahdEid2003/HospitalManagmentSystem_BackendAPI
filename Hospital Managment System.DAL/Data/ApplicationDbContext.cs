@@ -33,6 +33,7 @@ namespace Hospital_Managment_System.DAL.Data
 
         public DbSet<LabResultTranslations> LabResultTranslations { get; set; }
         public DbSet<DoctorSchedule> DoctorSchedules { get; set; }
+        public DbSet<DoctorRating> DoctorRatings { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IHttpContextAccessor httpContextAccessor)
         : base(options)
         {
@@ -209,6 +210,30 @@ namespace Hospital_Managment_System.DAL.Data
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<DoctorSchedule>()
+                .HasOne(x => x.UpdatedBy)
+                .WithMany()
+                .HasForeignKey(x => x.UpdatedById)
+                .OnDelete(DeleteBehavior.NoAction);
+            //rating
+            builder.Entity<DoctorRating>()
+            .HasOne(x => x.Doctor)
+            .WithMany(x => x.DoctorRatings)
+            .HasForeignKey(x => x.DoctorId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<DoctorRating>()
+                .HasOne(x => x.Patient)
+                .WithMany(x => x.DoctorRatings)
+                .HasForeignKey(x => x.PatientId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<DoctorRating>()
+                .HasOne(x => x.CreatedBy)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedById)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<DoctorRating>()
                 .HasOne(x => x.UpdatedBy)
                 .WithMany()
                 .HasForeignKey(x => x.UpdatedById)

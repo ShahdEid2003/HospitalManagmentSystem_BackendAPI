@@ -295,6 +295,54 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.ToTable("Doctors");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.DoctorRating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("PatientId");
+
+                    b.HasIndex("UpdatedById");
+
+                    b.ToTable("DoctorRatings");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.DoctorSchedule", b =>
                 {
                     b.Property<int>("Id")
@@ -856,6 +904,39 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.DoctorRating", b =>
+                {
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Doctor", "Doctor")
+                        .WithMany("DoctorRatings")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Patient", "Patient")
+                        .WithMany("DoctorRatings")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "UpdatedBy")
+                        .WithMany()
+                        .HasForeignKey("UpdatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+
+                    b.Navigation("UpdatedBy");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.DoctorSchedule", b =>
                 {
                     b.HasOne("Hospital_Managment_System.DAL.Models.ApplicationUser", "CreatedBy")
@@ -1106,6 +1187,8 @@ namespace Hospital_Managment_System.DAL.Migrations
                 {
                     b.Navigation("Appointments");
 
+                    b.Navigation("DoctorRatings");
+
                     b.Navigation("DoctorSchedules");
 
                     b.Navigation("MedicalRecords");
@@ -1128,6 +1211,8 @@ namespace Hospital_Managment_System.DAL.Migrations
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Patient", b =>
                 {
                     b.Navigation("Appointments");
+
+                    b.Navigation("DoctorRatings");
 
                     b.Navigation("MedicalRecords");
                 });

@@ -111,6 +111,12 @@ namespace Hospital_Mangament_System.BLL.Mapping
              dest => dest.UserCreated,
              src => src.CreatedBy.UserName
             );
+            TypeAdapterConfig<DoctorRating, DoctorRatingResponse>
+            .NewConfig()
+            .Map(
+                dest => dest.PatientName,
+                src => src.Patient.User.FullName
+            );
         }
 
         

@@ -1,5 +1,6 @@
 ﻿using Hospital_Managment_System.DAL.Repository.AppointmentRepositories;
 using Hospital_Managment_System.DAL.Repository.DepartmentRepositories;
+using Hospital_Managment_System.DAL.Repository.DoctorRatingRepositories;
 using Hospital_Managment_System.DAL.Repository.DoctorRepositories;
 using Hospital_Managment_System.DAL.Repository.DoctorScheduleRepositories;
 using Hospital_Managment_System.DAL.Repository.LabResultRepositories;
@@ -10,6 +11,7 @@ using Hospital_Managment_System.DAL.Utiles;
 using Hospital_Mangament_System.BLL.Services.AppointmentServices;
 using Hospital_Mangament_System.BLL.Services.AuthServices;
 using Hospital_Mangament_System.BLL.Services.DepartmentServices;
+using Hospital_Mangament_System.BLL.Services.DoctorRatingServices;
 using Hospital_Mangament_System.BLL.Services.DoctorScheduleServices;
 using Hospital_Mangament_System.BLL.Services.Email;
 using Hospital_Mangament_System.BLL.Services.LabResultServices;
@@ -41,6 +43,8 @@ namespace Hospital_Managment_System_.PL.Extensions
             Services.AddScoped<IPrescriptionService, PrescriptionService>();
             Services.AddScoped<ILabResultRepository, LabResultRepository>();
             Services.AddScoped<IDoctorScheduleRepository, DoctorScheduleRepository>();
+            Services.AddScoped<IDoctorRatingRepository,DoctorRatingRepository>();
+            Services.AddScoped<IDoctorRatingService,DoctorRatingService>();
 
             Services.AddScoped<IDoctorScheduleService,DoctorScheduleService>();
 
