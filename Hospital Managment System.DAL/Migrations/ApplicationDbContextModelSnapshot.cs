@@ -233,6 +233,45 @@ namespace Hospital_Managment_System.DAL.Migrations
                     b.ToTable("AppointmentTranslations");
                 });
 
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Bill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("AppointmentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("IssuedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentMethod")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StripeSessionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppointmentId")
+                        .IsUnique();
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("Bills");
+                });
+
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -929,6 +968,25 @@ namespace Hospital_Managment_System.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Appointment");
+                });
+
+            modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Bill", b =>
+                {
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Appointment", "Appointment")
+                        .WithOne()
+                        .HasForeignKey("Hospital_Managment_System.DAL.Models.Bill", "AppointmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_Managment_System.DAL.Models.Patient", "Patient")
+                        .WithMany()
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
+
+                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("Hospital_Managment_System.DAL.Models.Department", b =>

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,7 @@ namespace Hospital_Managment_System.DAL.Data
         public DbSet<DoctorSchedule> DoctorSchedules { get; set; }
         public DbSet<DoctorRating> DoctorRatings { get; set; }
         public DbSet<AppointmentBooking> AppointmentBookings { get; set; }
+        public DbSet<Bill> Bills { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IHttpContextAccessor httpContextAccessor)
         : base(options)
         {
@@ -263,6 +265,18 @@ namespace Hospital_Managment_System.DAL.Data
                 .WithMany()
                 .HasForeignKey(x => x.UpdatedById)
                 .OnDelete(DeleteBehavior.NoAction);
+            //bill
+            builder.Entity<Bill>()
+            .HasOne(x => x.Patient)
+            .WithMany()
+            .HasForeignKey(x => x.PatientId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Bill>()
+                .HasOne(x => x.Appointment)
+                .WithOne()
+                .HasForeignKey<Bill>(x => x.AppointmentId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

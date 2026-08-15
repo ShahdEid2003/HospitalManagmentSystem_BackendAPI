@@ -67,6 +67,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.17, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[52.3.0, )"
             }
           },
           "imports": [
@@ -238,6 +242,10 @@
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[9.0.17, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[52.3.0, )"
             }
           },
           "imports": [

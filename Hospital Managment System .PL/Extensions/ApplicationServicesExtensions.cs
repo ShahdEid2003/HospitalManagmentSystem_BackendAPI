@@ -1,4 +1,5 @@
 ﻿using Hospital_Managment_System.DAL.Repository.AppointmentRepositories;
+using Hospital_Managment_System.DAL.Repository.BillRepositories;
 using Hospital_Managment_System.DAL.Repository.BookingRepositories;
 using Hospital_Managment_System.DAL.Repository.DepartmentRepositories;
 using Hospital_Managment_System.DAL.Repository.DoctorRatingRepositories;
@@ -11,6 +12,7 @@ using Hospital_Managment_System.DAL.Repository.PrescriptionRepositories;
 using Hospital_Managment_System.DAL.Utiles;
 using Hospital_Mangament_System.BLL.Services.AppointmentServices;
 using Hospital_Mangament_System.BLL.Services.AuthServices;
+using Hospital_Mangament_System.BLL.Services.BillServices;
 using Hospital_Mangament_System.BLL.Services.DepartmentServices;
 using Hospital_Mangament_System.BLL.Services.DoctorRatingServices;
 using Hospital_Mangament_System.BLL.Services.DoctorScheduleServices;
@@ -22,6 +24,7 @@ using Hospital_Mangament_System.BLL.Services.PatientServices;
 using Hospital_Mangament_System.BLL.Services.PrescriptionServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Stripe;
 using AuthenticationService = Hospital_Mangament_System.BLL.Services.AuthServices.AuthenticationService;
 using IAuthenticationService = Hospital_Mangament_System.BLL.Services.AuthServices.IAuthenticationService;
 
@@ -53,6 +56,10 @@ namespace Hospital_Managment_System_.PL.Extensions
             Services.AddScoped<IDoctorScheduleService,DoctorScheduleService>();
             Services.AddScoped<IPatientService, PatientService>();
             Services.AddScoped<ILabResultService, LabResultService>();
+            Services.AddScoped<IBillRepository, BillRepository>();
+            Services.AddScoped<IBillService, BillService>();
+            Services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
+            StripeConfiguration.ApiKey = Configuration["Stripe:SecretKey"];
 
             return Services;
         }

@@ -200,8 +200,14 @@ namespace Hospital_Mangament_System.BLL.Mapping
                     .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
                     .Select(t => t.Instructions)
                     .FirstOrDefault());
+            TypeAdapterConfig<Bill, BillResponse>.NewConfig()
+            .Map(
+                dest => dest.PatientName,
+                src => src.Patient.User.FullName
+            );
+
         }
 
-        
+
     }
 }

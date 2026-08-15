@@ -205,6 +205,90 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.BillController",
+    "Method": "GetBills",
+    "RelativePath": "api/Bill",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.BillController",
+    "Method": "GetBillById",
+    "RelativePath": "api/Bill/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.BillController",
+    "Method": "Cancel",
+    "RelativePath": "api/Bill/cancel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.BillController",
+    "Method": "ProcessBill",
+    "RelativePath": "api/Bill/checkout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.BillRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.BillController",
+    "Method": "GetPatientBills",
+    "RelativePath": "api/Bill/patient/{patientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.BillController",
+    "Method": "Success",
+    "RelativePath": "api/Bill/success",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sessionId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Hospital_Managment_System_.PL.Controllers.DepartmentsController",
     "Method": "Index",
     "RelativePath": "api/Departments",
@@ -688,7 +772,7 @@
     "ContainingType": "Hospital_Managment_System_.PL.Controllers.PatientController",
     "Method": "CancelAppointment",
     "RelativePath": "api/Patient/Appointments/{appointmentId}/Cancel",
-    "HttpMethod": "PUT",
+    "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [
