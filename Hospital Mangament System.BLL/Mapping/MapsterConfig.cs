@@ -15,11 +15,31 @@ namespace Hospital_Mangament_System.BLL.Mapping
     {
         public static void MapsterConfigRegister()
         {
-            TypeAdapterConfig<Department, DepartmentResponse>.NewConfig()
-              .Map(destniation => destniation.UserCreated, source => source.CreatedBy.UserName)
-              .Map(dest => dest.Name, source => source.Translations
-              .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
-              .Select(t => t.Name).FirstOrDefault() ?? "Default Department Name");
+        TypeAdapterConfig<Department, DepartmentResponse>.NewConfig()
+         .Map(
+             dest => dest.UserCreated,
+             src => src.CreatedBy.UserName
+         )
+         .Map(
+             dest => dest.Name,
+             src => src.Translations
+                 .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                 .Select(t => t.Name)
+                 .FirstOrDefault()
+                 ?? "Default Department Name"
+         ).Map(
+                dest => dest.Description,
+                src => src.Translations
+                    .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                    .Select(t => t.Description)
+                    .FirstOrDefault()
+                    ?? ""
+            )
+         .Map(
+             dest => dest.ImageUrl,
+             src => $"https://localhost:7186/images/{src.ImageUrl}"
+         );
+
             TypeAdapterConfig<Appointment, AppointmentResponse>.NewConfig()
 
             .Map(dest => dest.UserCreated,

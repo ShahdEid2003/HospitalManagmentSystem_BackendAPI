@@ -429,25 +429,40 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "Hospital_Managment_System.DAL.DTO.Request.DepartmentRequest",
-        "IsRequired": true
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Translations",
+        "Type": "System.Collections.Generic.List\u00601[[Hospital_Managment_System.DAL.DTO.Request.DepartmentTranslationsRequest, Hospital Managment System.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "Hospital_Managment_System_.PL.Controllers.DepartmentsController",
-    "Method": "UpdateProduct",
+    "Method": "UpdateDepartment",
     "RelativePath": "api/Departments",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "Hospital_Managment_System.DAL.DTO.Request.UpdateDepartmentRequest",
-        "IsRequired": true
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Translations",
+        "Type": "System.Collections.Generic.List\u00601[[Hospital_Managment_System.DAL.DTO.Request.DepartmentTranslationsRequest, Hospital Managment System.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

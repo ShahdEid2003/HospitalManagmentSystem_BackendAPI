@@ -28,13 +28,12 @@ namespace Hospital_Managment_System_.PL.Controllers
             return Ok(new { data = departments, _localizer["Success"].Value });
 
         }
-        
+       
+
         [HttpPost("")]
-        public async Task<IActionResult> Create(
-             [FromForm] DepartmentRequest request)
+        public async Task<IActionResult> Create( [FromForm] DepartmentRequest request)
         {
-            var response =
-                await _IDepartmentService.CreateDepartment(request);
+            var response = await _IDepartmentService.CreateDepartment(request);
 
             return Ok(new
             {

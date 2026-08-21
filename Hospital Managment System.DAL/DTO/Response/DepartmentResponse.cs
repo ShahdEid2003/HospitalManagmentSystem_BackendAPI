@@ -11,5 +11,7 @@ namespace Hospital_Managment_System.DAL.DTO.Response
         public int Id { get; set; }
         public string UserCreated { get; set; }
         public string Name { get; set; }
+        public string? Description { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

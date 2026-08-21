@@ -18,6 +18,35 @@ namespace Hospital_Managment_System_.PL
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+            builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                    Description = "Enter JWT token like: Bearer {token}"
+                });
+
+            options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+            {
+                {
+                    new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                    {
+                        Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                        {
+                            Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
+            });
             //db
             builder.Services.AddDatabaseServices(builder.Configuration);
             //Identity
@@ -35,6 +64,9 @@ namespace Hospital_Managment_System_.PL
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             //app.UseCors(CorsPolicy.PolicyName);//Â‰« Ì „ ì ›⁄Ì·î CORS ›⁄·Ì« ⁄·Ï «·ÿ·»« 
@@ -42,7 +74,7 @@ namespace Hospital_Managment_System_.PL
             app.UseHttpsRedirection();
             app.UseAuthentication();//jwt
             app.UseAuthorization();
-            //app.UseStaticFiles();//Â«Ì ⁄‘«‰ «·’Ê— „‰ «·(wwwroot)  ÊŒ– «·’Ê—…
+            app.UseStaticFiles();//Â«Ì ⁄‘«‰ «·’Ê— „‰ «·(wwwroot)  ÊŒ– «·’Ê—…
             app.MapControllers();//Ì—»ÿ «·‹ endpoints »«·‹ Controllers
 
 
