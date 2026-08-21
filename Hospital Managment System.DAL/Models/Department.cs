@@ -10,6 +10,8 @@ namespace Hospital_Managment_System.DAL.Models
     {
         public int Id { get; set; }
 
+        public string? ImageUrl { get; set; }
+
         public List<Doctor> Doctors { get; set; }
         public List<DepartmentTranslations> Translations { get; set; }
     }

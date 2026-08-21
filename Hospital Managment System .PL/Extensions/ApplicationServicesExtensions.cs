@@ -10,6 +10,7 @@ using Hospital_Managment_System.DAL.Repository.MedicalRecordRepositories;
 using Hospital_Managment_System.DAL.Repository.PatientRepositories;
 using Hospital_Managment_System.DAL.Repository.PrescriptionRepositories;
 using Hospital_Managment_System.DAL.Utiles;
+using Hospital_Mangament_System.BLL.Services.Admin;
 using Hospital_Mangament_System.BLL.Services.AppointmentServices;
 using Hospital_Mangament_System.BLL.Services.AuthServices;
 using Hospital_Mangament_System.BLL.Services.BillServices;
@@ -18,6 +19,7 @@ using Hospital_Mangament_System.BLL.Services.DoctorRatingServices;
 using Hospital_Mangament_System.BLL.Services.DoctorScheduleServices;
 using Hospital_Mangament_System.BLL.Services.DoctorService;
 using Hospital_Mangament_System.BLL.Services.Email;
+using Hospital_Mangament_System.BLL.Services.FileService;
 using Hospital_Mangament_System.BLL.Services.LabResultServices;
 using Hospital_Mangament_System.BLL.Services.MedicalRecoredServices;
 using Hospital_Mangament_System.BLL.Services.PatientServices;
@@ -38,6 +40,7 @@ namespace Hospital_Managment_System_.PL.Extensions
             Services.AddScoped<IDepartmentService, DepartmentService>();
             Services.AddScoped<IAuthenticationService, AuthenticationService>();
             Services.AddScoped<ISeedData, RoleSeedData>();
+            Services.AddScoped<ISeedData, AdminSeedData>();
             Services.AddScoped<IPatientRepository, PatientRepository>();
             Services.AddScoped<IDoctorRepository, DoctorRepository>();
             Services.AddTransient<IEmailSender, EmailSender>();
@@ -58,6 +61,8 @@ namespace Hospital_Managment_System_.PL.Extensions
             Services.AddScoped<ILabResultService, LabResultService>();
             Services.AddScoped<IBillRepository, BillRepository>();
             Services.AddScoped<IBillService, BillService>();
+            Services.AddScoped<IAdminUserService, AdminUserService>();
+            Services.AddScoped<IFileService, Hospital_Mangament_System.BLL.Services.FileService.FileService>();
             Services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             StripeConfiguration.ApiKey = Configuration["Stripe:SecretKey"];
 

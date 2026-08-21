@@ -10,7 +10,7 @@ namespace Hospital_Managment_System_.PL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class DepartmentsController : ControllerBase
     {
         private readonly IStringLocalizer _localizer;
@@ -28,20 +28,19 @@ namespace Hospital_Managment_System_.PL.Controllers
             return Ok(new { data = departments, _localizer["Success"].Value });
 
         }
+        
         [HttpPost("")]
-        public async Task<IActionResult> Create(DepartmentRequest request)
+        public async Task<IActionResult> Create(
+             [FromForm] DepartmentRequest request)
         {
-            var response = await _IDepartmentService.CreateDepartment(request);
+            var response =
+                await _IDepartmentService.CreateDepartment(request);
 
-
-            return
-                Ok(new
-                {
-                    response,
-                    message = _localizer["Success"].Value
-                });
-
-
+            return Ok(new
+            {
+                response,
+                message = _localizer["Success"].Value
+            });
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
@@ -61,14 +60,22 @@ namespace Hospital_Managment_System_.PL.Controllers
 
         }
         [HttpPatch("")]
-       
-        public async Task<IActionResult> UpdateProduct( [FromBody] UpdateDepartmentRequest request)
+        public async Task<IActionResult> UpdateDepartment(
+          [FromForm] UpdateDepartmentRequest request)
         {
-            var result = await _IDepartmentService.Update( request);
-            if (!result) return NotFound(new { messege = _localizer["NotFound"].Value });
-            return Ok(new { messege = _localizer["Success"].Value }); ;
+            var result =
+                await _IDepartmentService.Update(request);
 
+            if (!result)
+                return NotFound(new
+                {
+                    message = _localizer["NotFound"].Value
+                });
 
+            return Ok(new
+            {
+                message = _localizer["Success"].Value
+            });
         }
     }
 }

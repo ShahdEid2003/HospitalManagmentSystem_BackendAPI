@@ -46,8 +46,8 @@ namespace Hospital_Managment_System_.PL
             app.MapControllers();//Ì—»ÿ «·‹ endpoints »«·‹ Controllers
 
 
+           
 
-          
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -57,6 +57,7 @@ namespace Hospital_Managment_System_.PL
                     await seeder.DataSeed();
                 }
             }
+
 
             app.Run();
         }

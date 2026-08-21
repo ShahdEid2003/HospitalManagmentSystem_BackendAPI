@@ -111,6 +111,128 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.AdminUserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/admin/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.AdminUserController",
+    "Method": "AddUser",
+    "RelativePath": "api/admin/users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.AdminUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.AdminUserController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/admin/users",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.UpdateAdminUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.AdminUserController",
+    "Method": "GetUserById",
+    "RelativePath": "api/admin/users/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.AdminUserController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/admin/users/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.AdminUserController",
+    "Method": "ActivateUser",
+    "RelativePath": "api/admin/users/{id}/activate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.AdminUserController",
+    "Method": "DeactivateUser",
+    "RelativePath": "api/admin/users/{id}/deactivate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hospital_Managment_System_.PL.Controllers.AdminUserController",
+    "Method": "AssignRole",
+    "RelativePath": "api/admin/users/assign-role",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Hospital_Managment_System.DAL.DTO.Request.AssignRoleRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Hospital_Managment_System_.PL.Controllers.AppointmentController",
     "Method": "Create",
     "RelativePath": "api/Appointment",
