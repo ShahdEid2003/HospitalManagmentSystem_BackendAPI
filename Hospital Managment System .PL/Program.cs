@@ -4,6 +4,7 @@ using Hospital_Managment_System_.PL.Extensions;
 using Hospital_Mangament_System.BLL.Mapping;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Extensions.Options;
+using CorsPolicy = Hospital_Managment_System_.PL.Extensions.CorsPolicy;
 
 namespace Hospital_Managment_System_.PL
 {
@@ -47,6 +48,8 @@ namespace Hospital_Managment_System_.PL
                 }
             });
             });
+            //CORS
+            builder.Services.AddCorsPolicy();//åĞÇ İŞØ ÊÚÑíİ ÅÚÏÇÏÇÊ CORS æáíÓ ÊØÈíŞåÇ
             //db
             builder.Services.AddDatabaseServices(builder.Configuration);
             //Identity
@@ -69,8 +72,8 @@ namespace Hospital_Managment_System_.PL
                 app.UseSwaggerUI();
             }
 
-            //app.UseCors(CorsPolicy.PolicyName);//åäÇ íÊã “ÊİÚíá” CORS İÚáíÇğ Úáì ÇáØáÈÇÊ
-            //                                   //  Ãí request íÏÎá ÇáÓíÑİÑ íÊã İÍÕå ÍÓÈ ÇáÓíÇÓÉ
+            app.UseCors(CorsPolicy.PolicyName);//åäÇ íÊã “ÊİÚíá” CORS İÚáíÇğ Úáì ÇáØáÈÇÊ
+                                               //  Ãí request íÏÎá ÇáÓíÑİÑ íÊã İÍÕå ÍÓÈ ÇáÓíÇÓÉ
             app.UseHttpsRedirection();
             app.UseAuthentication();//jwt
             app.UseAuthorization();

@@ -1,0 +1,15 @@
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\bin\Release\net9.0\Hospital Managment System.DAL.deps.json
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\bin\Release\net9.0\Hospital Managment System.DAL.runtimeconfig.json
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\bin\Release\net9.0\Hospital Managment System.DAL.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\bin\Release\net9.0\Hospital Managment System.DAL.pdb
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\Hospital Managment System.DAL.csproj.AssemblyReference.cache
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\Hospital Managment System.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\Hospital Managment System.DAL.AssemblyInfoInputs.cache
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\Hospital Managment System.DAL.AssemblyInfo.cs
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\Hospital Managment System.DAL.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\Hospital Managment System.DAL.sourcelink.json
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\Hospital Managment System.DAL.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\refint\Hospital Managment System.DAL.dll
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\Hospital Managment System.DAL.pdb
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\Hospital Managment System.DAL.genruntimeconfig.cache
+C:\Users\user\Documents\Full Stack\BackEnd\API\Hospital Managment System\Hospital Managment System.DAL\obj\Release\net9.0\ref\Hospital Managment System.DAL.dll
