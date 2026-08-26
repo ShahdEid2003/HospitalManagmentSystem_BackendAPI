@@ -15,30 +15,35 @@ namespace Hospital_Mangament_System.BLL.Mapping
     {
         public static void MapsterConfigRegister()
         {
-        TypeAdapterConfig<Department, DepartmentResponse>.NewConfig()
-         .Map(
-             dest => dest.UserCreated,
-             src => src.CreatedBy.UserName
-         )
-         .Map(
-             dest => dest.Name,
-             src => src.Translations
-                 .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
-                 .Select(t => t.Name)
-                 .FirstOrDefault()
-                 ?? "Default Department Name"
-         ).Map(
-                dest => dest.Description,
+             TypeAdapterConfig<DepartmentTranslationsRequest, DepartmentTranslations>
+            .NewConfig();
+            TypeAdapterConfig<DepartmentRequest, Department>.NewConfig()
+            .Map(
+                dest => dest.Translations,
                 src => src.Translations
-                    .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
-                    .Select(t => t.Description)
-                    .FirstOrDefault()
-                    ?? ""
-            )
-         .Map(
-             dest => dest.ImageUrl,
-             src => $"https://localhost:7186/images/{src.ImageUrl}"
-         );
+            );
+                    TypeAdapterConfig<Department, DepartmentResponse>.NewConfig()
+                      .Map(
+                          dest => dest.UserCreated,
+                          source => source.CreatedBy.UserName
+                      )
+                      .Map(
+                          dest => dest.Name,
+                          source => source.Translations
+                              .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                              .Select(t => t.Name)
+                              .FirstOrDefault()
+                      )
+                      .Map(
+                          dest => dest.Description,
+                          source => source.Translations
+                              .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                              .Select(t => t.Description)
+                              .FirstOrDefault())
+                                 .Map(
+                     dest => dest.ImageUrl,
+                     src => $"https://localhost:7042/images/{src.ImageUrl}"
+                 );
 
             TypeAdapterConfig<Appointment, AppointmentResponse>.NewConfig()
 

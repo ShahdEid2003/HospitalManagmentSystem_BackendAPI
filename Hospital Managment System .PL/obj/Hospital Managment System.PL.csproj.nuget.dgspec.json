@@ -56,7 +56,7 @@
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[9.0.12, )"
+              "version": "[9.0.17, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

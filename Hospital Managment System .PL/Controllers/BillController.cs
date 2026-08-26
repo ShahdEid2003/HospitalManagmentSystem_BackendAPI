@@ -8,7 +8,7 @@ namespace Hospital_Managment_System_.PL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Receptionist")]
+    [Authorize(Roles = "Receptionist,Admin")]
     public class BillController : ControllerBase
     {
         private readonly IBillService _billService;

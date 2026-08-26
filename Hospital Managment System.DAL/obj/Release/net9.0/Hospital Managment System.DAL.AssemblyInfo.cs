@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hospital Managment System.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ffbeec203cc9a4b42453c2d284ca3d8734ff95e2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7738cc477cc7865f91fddb2a816e4004772df31")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hospital Managment System.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hospital Managment System.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -179,7 +179,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.OpenApi/9.0.12": {
+      "Microsoft.AspNetCore.OpenApi/9.0.17": {
         "type": "package",
         "dependencies": {
           "Microsoft.OpenApi": "1.6.17"
@@ -1946,10 +1946,10 @@
         "microsoft.aspnetcore.identity.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.OpenApi/9.0.12": {
-      "sha512": "1MESYhofLCDXPPxxj4fY+e1vqm4ZIMwrt6gbulGNY0fXiNPzhycdIrZJn0JXJmbppEWnkvJtoCPfrzyV1DIpew==",
+    "Microsoft.AspNetCore.OpenApi/9.0.17": {
+      "sha512": "+zcqQ/JecNl4G1hC2mrJ8qDolJv17W3grToEqcGZGqa3cXWaCjA9KTdigU0WVK3LWI0TtOG/Q/joXRdKqFhB9Q==",
       "type": "package",
-      "path": "microsoft.aspnetcore.openapi/9.0.12",
+      "path": "microsoft.aspnetcore.openapi/9.0.17",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1958,7 +1958,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll",
         "lib/net9.0/Microsoft.AspNetCore.OpenApi.xml",
-        "microsoft.aspnetcore.openapi.9.0.12.nupkg.sha512",
+        "microsoft.aspnetcore.openapi.9.0.17.nupkg.sha512",
         "microsoft.aspnetcore.openapi.nuspec"
       ]
     },
@@ -5064,7 +5064,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Hospital Mangament System.BLL >= 1.0.0",
-      "Microsoft.AspNetCore.OpenApi >= 9.0.12",
+      "Microsoft.AspNetCore.OpenApi >= 9.0.17",
       "Microsoft.EntityFrameworkCore >= 9.0.17",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.17",
       "Stripe.net >= 52.3.0",
@@ -5127,7 +5127,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
-            "version": "[9.0.12, )"
+            "version": "[9.0.17, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",

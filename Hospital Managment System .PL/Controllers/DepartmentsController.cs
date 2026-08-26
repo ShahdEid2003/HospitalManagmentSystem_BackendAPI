@@ -31,7 +31,7 @@ namespace Hospital_Managment_System_.PL.Controllers
        
 
         [HttpPost("")]
-        public async Task<IActionResult> Create( [FromForm] DepartmentRequest request)
+        public async Task<IActionResult> Create([FromForm]DepartmentRequest request)
         {
             var response = await _IDepartmentService.CreateDepartment(request);
 

@@ -11,7 +11,7 @@ namespace Hospital_Managment_System_.PL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Patient")]
+    [Authorize(Roles = "Patient,Admin")]
     public class PatientController : ControllerBase
     {
             private readonly IStringLocalizer _localizer;
